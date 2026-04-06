@@ -1,14 +1,47 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import NavbarHero from "@/components/NavbarHero";
+import MainSections from "@/components/MainSections";
+import ContactsFooter from "@/components/ContactsFooter";
 
-const Index = () => {
+export default function Index() {
+  const [formData, setFormData] = useState({ name: "", phone: "", message: "" });
+  const [formSent, setFormSent] = useState(false);
+  const [bookingData, setBookingData] = useState({ name: "", phone: "", dates: "", cabin: "", guests: "" });
+  const [bookingSent, setBookingSent] = useState(false);
+
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormSent(true);
+    setTimeout(() => setFormSent(false), 4000);
+    setFormData({ name: "", phone: "", message: "" });
+  };
+
+  const handleBookingSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setBookingSent(true);
+    setTimeout(() => setBookingSent(false), 4000);
+    setBookingData({ name: "", phone: "", dates: "", cabin: "", guests: "" });
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4 color-black text-black">Добро пожаловать!</h1>
-        <p className="text-xl text-gray-600">тут будет отображаться ваш проект</p>
-      </div>
+    <div className="min-h-screen overflow-x-hidden">
+      <NavbarHero scrollTo={scrollTo} />
+      <MainSections scrollTo={scrollTo} />
+      <ContactsFooter
+        scrollTo={scrollTo}
+        formData={formData}
+        setFormData={setFormData}
+        formSent={formSent}
+        handleFormSubmit={handleFormSubmit}
+        bookingData={bookingData}
+        setBookingData={setBookingData}
+        bookingSent={bookingSent}
+        handleBookingSubmit={handleBookingSubmit}
+      />
     </div>
   );
-};
-
-export default Index;
+}
