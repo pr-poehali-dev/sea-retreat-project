@@ -45,10 +45,11 @@ export default function ContactsFooter({
               Онлайн запись
             </div>
             <h2 className="font-display text-5xl font-bold text-white mb-4">
-              Забронируйте домик
+              Выберите даты и забронируйте отдых
             </h2>
-            <p className="text-white/70 text-lg">
-              Заполните форму — мы свяжемся в течение часа
+            <p className="text-white/70 text-lg max-w-2xl mx-auto">
+              Планируете поездку на выходные, семейный отпуск или отдых у моря
+              на несколько дней? Свяжитесь с нами — подберём лучший вариант.
             </p>
           </div>
 
@@ -125,37 +126,57 @@ export default function ContactsFooter({
                 <div className="grid md:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-sm font-semibold text-ocean-deep mb-2">
-                      Даты заезда/выезда
+                      Дата заезда
                     </label>
                     <input
-                      type="text"
+                      type="date"
                       value={bookingData.dates}
                       onChange={(e) =>
                         setBookingData((p) => ({ ...p, dates: e.target.value }))
                       }
-                      placeholder="01.07 – 07.07.2026"
                       className="w-full px-4 py-3 rounded-xl border border-border bg-white focus:outline-none focus:ring-2 focus:ring-ocean-mid transition-all text-foreground"
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-ocean-deep mb-2">
-                      Количество гостей
+                      Дата выезда
                     </label>
-                    <select
+                    <input
+                      type="date"
                       value={bookingData.guests}
                       onChange={(e) =>
                         setBookingData((p) => ({ ...p, guests: e.target.value }))
                       }
                       className="w-full px-4 py-3 rounded-xl border border-border bg-white focus:outline-none focus:ring-2 focus:ring-ocean-mid transition-all text-foreground"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-5">
+                  <div>
+                    <label className="block text-sm font-semibold text-ocean-deep mb-2">
+                      Количество гостей
+                    </label>
+                    <select
+                      value={bookingData.cabin}
+                      onChange={(e) =>
+                        setBookingData((p) => ({ ...p, cabin: e.target.value }))
+                      }
+                      className="w-full px-4 py-3 rounded-xl border border-border bg-white focus:outline-none focus:ring-2 focus:ring-ocean-mid transition-all text-foreground"
                     >
                       <option value="">Выберите</option>
-                      {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
-                        <option key={n} value={n}>
-                          {n}{" "}
-                          {n === 1 ? "человек" : n < 5 ? "человека" : "человек"}
-                        </option>
-                      ))}
+                      <option value="1-2">1–2 человека</option>
+                      <option value="3-4">3–4 человека</option>
+                      <option value="5+">5+ человек</option>
                     </select>
+                  </div>
+                  <div className="flex items-end">
+                    <a
+                      href="tel:+79000000000"
+                      className="w-full btn-primary text-center text-sm py-3 block"
+                    >
+                      📞 Позвонить и забронировать
+                    </a>
                   </div>
                 </div>
 
@@ -372,20 +393,20 @@ export default function ContactsFooter({
               </div>
               <div>
                 <div className="font-bold font-display">
-                  База отдыха у воды
+                  База отдыха у моря
                 </div>
                 <div className="text-white/50 text-xs">
-                  Московская область
+                  Круглый год
                 </div>
               </div>
             </div>
 
             <div className="flex flex-wrap justify-center gap-6 text-sm">
               {[
-                ["about", "О базе"],
+                ["about", "О нас"],
+                ["advantages", "Преимущества"],
                 ["cabins", "Домики"],
                 ["services", "Услуги"],
-                ["gallery", "Галерея"],
                 ["contacts", "Контакты"],
               ].map(([id, label]) => (
                 <button
@@ -417,7 +438,7 @@ export default function ContactsFooter({
           </div>
 
           <div className="border-t border-white/10 mt-8 pt-8 text-center text-white/40 text-sm">
-            © 2026 База отдыха у воды. Все права защищены.
+            © 2026 База отдыха у моря. Все права защищены. | Телефон: +7 (900) 000-00-00 | Email: info@baza-more.ru
           </div>
         </div>
       </footer>

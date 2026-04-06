@@ -128,13 +128,14 @@ export default function NavbarHero({ scrollTo }: NavbarHeroProps) {
             </div>
 
             <h1 className="font-display text-6xl md:text-8xl font-bold text-white leading-none mb-6 animate-fade-in-up delay-100">
-              Отдых у<br />
-              <span className="italic text-ocean-light">воды</span>
+              Отдых у моря,<br />
+              <span className="italic text-ocean-light">в который хочется вернуться</span>
             </h1>
 
             <p className="text-white/80 text-lg md:text-xl mb-10 max-w-xl leading-relaxed animate-fade-in-up delay-200">
-              Уютные домики на берегу озера, чистый воздух и тишина. Настоящий
-              отдых для всей семьи вдали от городской суеты.
+              Круглогодичная база отдыха с комфортными домиками, природой вокруг,
+              свежим морским воздухом и всем необходимым для спокойного, семейного
+              или романтичного отдыха.
             </p>
 
             <div className="flex flex-wrap gap-4 animate-fade-in-up delay-300">
@@ -142,7 +143,7 @@ export default function NavbarHero({ scrollTo }: NavbarHeroProps) {
                 onClick={() => scrollTo("booking")}
                 className="btn-primary text-base"
               >
-                Забронировать домик
+                Забронировать отдых
               </button>
               <button
                 onClick={() => scrollTo("cabins")}
@@ -154,17 +155,17 @@ export default function NavbarHero({ scrollTo }: NavbarHeroProps) {
 
             <div className="flex flex-wrap gap-8 mt-16 animate-fade-in-up delay-400">
               {[
-                ["🏡", "15+", "Домиков"],
-                ["⭐", "4.9", "Рейтинг"],
-                ["🎣", "5 км", "Береговой линии"],
-                ["🌲", "10 лет", "Работаем"],
+                ["🌊", "Море рядом", ""],
+                ["🏡", "Уютные домики", ""],
+                ["👨‍👩‍👧", "Подходит для детей", ""],
+                ["🗓️", "Круглый год", ""],
               ].map(([emoji, val, label]) => (
-                <div key={label} className="text-center">
+                <div key={val} className="text-center">
                   <div className="text-2xl mb-1">{emoji}</div>
-                  <div className="text-white font-bold text-2xl leading-none">
+                  <div className="text-white font-semibold text-sm leading-tight max-w-[80px]">
                     {val}
                   </div>
-                  <div className="text-white/60 text-xs mt-1">{label}</div>
+                  {label && <div className="text-white/60 text-xs mt-1">{label}</div>}
                 </div>
               ))}
             </div>
