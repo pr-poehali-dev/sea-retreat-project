@@ -53,10 +53,10 @@ const advantages = [
 
 const galleryImages = [
   { src: HERO_IMAGE, alt: "Вид с высоты на базу" },
-  { src: CABIN_IMAGE, alt: "Интерьер домика" },
+  { src: "https://cdn.poehali.dev/projects/66ae829b-e98a-4b94-a8d3-321775b785ad/files/784f792a-eaeb-47d9-88aa-44577d7b4894.jpg", alt: "Уютный домик" },
   { src: ACTIVITIES_IMAGE, alt: "Активности" },
   { src: HERO_IMAGE, alt: "Море на закате" },
-  { src: CABIN_IMAGE, alt: "Уютный вечер" },
+  { src: "https://cdn.poehali.dev/projects/66ae829b-e98a-4b94-a8d3-321775b785ad/files/83d942e8-d15a-49b2-8b3a-8f9c409d425b.jpg", alt: "Семейный домик" },
   { src: ACTIVITIES_IMAGE, alt: "Пляж и причал" },
 ];
 
