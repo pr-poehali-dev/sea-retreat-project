@@ -2,8 +2,6 @@ import Icon from "@/components/ui/icon";
 
 const HERO_IMAGE =
   "https://cdn.poehali.dev/projects/66ae829b-e98a-4b94-a8d3-321775b785ad/files/42ccb1a2-74be-4527-b829-a50095735bd0.jpg";
-const CABIN_IMAGE =
-  "https://cdn.poehali.dev/projects/66ae829b-e98a-4b94-a8d3-321775b785ad/files/48cd214a-d246-47ae-9345-5228b2e35e33.jpg";
 const ACTIVITIES_IMAGE =
   "https://cdn.poehali.dev/projects/66ae829b-e98a-4b94-a8d3-321775b785ad/files/d4881bab-4db7-42a0-b329-4e7512877f4d.jpg";
 
@@ -14,6 +12,7 @@ const cabins = [
     price: "от 3 500 ₽/ночь",
     features: ["Вид на море", "Веранда", "Мангал"],
     emoji: "🏡",
+    image: "https://cdn.poehali.dev/projects/66ae829b-e98a-4b94-a8d3-321775b785ad/files/784f792a-eaeb-47d9-88aa-44577d7b4894.jpg",
   },
   {
     name: "Семейный домик",
@@ -21,6 +20,7 @@ const cabins = [
     price: "от 5 500 ₽/ночь",
     features: ["2 спальни", "Терраса", "Парковка"],
     emoji: "🏠",
+    image: "https://cdn.poehali.dev/projects/66ae829b-e98a-4b94-a8d3-321775b785ad/files/83d942e8-d15a-49b2-8b3a-8f9c409d425b.jpg",
   },
   {
     name: "VIP коттедж",
@@ -28,6 +28,7 @@ const cabins = [
     price: "от 9 900 ₽/ночь",
     features: ["Панорамный вид", "Баня", "Лодка"],
     emoji: "🏰",
+    image: "https://cdn.poehali.dev/projects/66ae829b-e98a-4b94-a8d3-321775b785ad/files/20d73595-e671-47db-9bd1-067a8d02ff31.jpg",
   },
 ];
 
@@ -246,7 +247,7 @@ export default function MainSections({ scrollTo }: MainSectionsProps) {
               >
                 <div className="relative h-52 overflow-hidden">
                   <img
-                    src={CABIN_IMAGE}
+                    src={cabin.image}
                     alt={cabin.name}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
