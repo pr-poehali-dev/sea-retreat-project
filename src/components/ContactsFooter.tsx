@@ -1,4 +1,5 @@
 import Icon from "@/components/ui/icon";
+import FeedbackForm from "@/components/FeedbackForm";
 
 const cabins = [
   { name: "Уютный домик", price: "от 3 500 ₽/ночь" },
@@ -8,10 +9,6 @@ const cabins = [
 
 interface ContactsFooterProps {
   scrollTo: (id: string) => void;
-  formData: { name: string; phone: string; message: string };
-  setFormData: React.Dispatch<React.SetStateAction<{ name: string; phone: string; message: string }>>;
-  formSent: boolean;
-  handleFormSubmit: (e: React.FormEvent) => void;
   bookingData: { name: string; phone: string; dates: string; cabin: string; guests: string };
   setBookingData: React.Dispatch<React.SetStateAction<{ name: string; phone: string; dates: string; cabin: string; guests: string }>>;
   bookingSent: boolean;
@@ -20,10 +17,6 @@ interface ContactsFooterProps {
 
 export default function ContactsFooter({
   scrollTo,
-  formData,
-  setFormData,
-  formSent,
-  handleFormSubmit,
   bookingData,
   setBookingData,
   bookingSent,
@@ -296,55 +289,7 @@ export default function ContactsFooter({
                 <h4 className="font-bold text-ocean-deep mb-4">
                   Задать вопрос
                 </h4>
-                {formSent ? (
-                  <div className="text-center py-6">
-                    <div className="text-4xl mb-2">✅</div>
-                    <div className="font-semibold text-ocean-deep">
-                      Сообщение отправлено!
-                    </div>
-                    <div className="text-sm text-muted-foreground mt-1">
-                      Ответим в течение 30 минут
-                    </div>
-                  </div>
-                ) : (
-                  <form onSubmit={handleFormSubmit} className="space-y-4">
-                    <input
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={(e) =>
-                        setFormData((p) => ({ ...p, name: e.target.value }))
-                      }
-                      placeholder="Ваше имя"
-                      className="w-full px-4 py-3 rounded-xl border border-border focus:outline-none focus:ring-2 focus:ring-ocean-mid transition-all text-foreground text-sm"
-                    />
-                    <input
-                      type="tel"
-                      required
-                      value={formData.phone}
-                      onChange={(e) =>
-                        setFormData((p) => ({ ...p, phone: e.target.value }))
-                      }
-                      placeholder="Телефон"
-                      className="w-full px-4 py-3 rounded-xl border border-border focus:outline-none focus:ring-2 focus:ring-ocean-mid transition-all text-foreground text-sm"
-                    />
-                    <textarea
-                      value={formData.message}
-                      onChange={(e) =>
-                        setFormData((p) => ({ ...p, message: e.target.value }))
-                      }
-                      placeholder="Ваш вопрос..."
-                      rows={3}
-                      className="w-full px-4 py-3 rounded-xl border border-border focus:outline-none focus:ring-2 focus:ring-ocean-mid transition-all text-foreground text-sm resize-none"
-                    />
-                    <button
-                      type="submit"
-                      className="w-full btn-primary text-sm py-3 block text-center"
-                    >
-                      Отправить вопрос
-                    </button>
-                  </form>
-                )}
+                <FeedbackForm compact />
               </div>
             </div>
 
