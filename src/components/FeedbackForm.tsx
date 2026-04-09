@@ -10,14 +10,20 @@ export default function FeedbackForm({ compact = false }: FeedbackFormProps) {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
+    try {
+      await fetch("https://functions.poehali.dev/bfc83f06-5a9a-4b9f-b7ac-3598ff3bc98d", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, form_type: "feedback" }),
+      });
       setSent(true);
       setForm({ name: "", phone: "", message: "" });
-    }, 900);
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (sent) {

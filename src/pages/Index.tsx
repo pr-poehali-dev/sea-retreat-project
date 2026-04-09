@@ -11,10 +11,15 @@ export default function Index() {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleBookingSubmit = (e: React.FormEvent) => {
+  const handleBookingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    await fetch("https://functions.poehali.dev/bfc83f06-5a9a-4b9f-b7ac-3598ff3bc98d", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...bookingData, checkout: bookingData.guests, form_type: "booking" }),
+    });
     setBookingSent(true);
-    setTimeout(() => setBookingSent(false), 4000);
+    setTimeout(() => setBookingSent(false), 5000);
     setBookingData({ name: "", phone: "", dates: "", cabin: "", guests: "" });
   };
 
