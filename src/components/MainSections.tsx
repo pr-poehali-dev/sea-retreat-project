@@ -33,12 +33,12 @@ const cabins = [
 ];
 
 const services = [
-  { icon: "Waves", title: "Море рядом", desc: "Выход к морю в 5 минутах от любого домика" },
-  { icon: "Flame", title: "Баня и сауна", desc: "Русская баня на берегу с выходом к воде" },
-  { icon: "Utensils", title: "Мангальная зона", desc: "Оборудованные места с дровами и столами" },
-  { icon: "Bike", title: "Активный отдых", desc: "Велосипеды, каяки, волейбол, пляж" },
-  { icon: "Baby", title: "Для детей", desc: "Детская площадка, безопасная территория" },
-  { icon: "Coffee", title: "Питание", desc: "Домашняя кухня по предварительному заказу" },
+  { icon: "Waves", title: "Море рядом", desc: "Выход к морю в 5 минутах от любого домика", image: "https://cdn.poehali.dev/projects/66ae829b-e98a-4b94-a8d3-321775b785ad/files/610f8d7f-2930-416d-8a72-9696fdec9c5e.jpg" },
+  { icon: "Flame", title: "Баня и сауна", desc: "Русская баня на берегу с выходом к воде", image: "https://cdn.poehali.dev/projects/66ae829b-e98a-4b94-a8d3-321775b785ad/files/86cd71e1-aa3b-4bff-b2b4-1ce51c056347.jpg" },
+  { icon: "Utensils", title: "Мангальная зона", desc: "Оборудованные места с дровами и столами", image: "https://cdn.poehali.dev/projects/66ae829b-e98a-4b94-a8d3-321775b785ad/files/c2407a3a-d85a-4043-bca3-4c0f2ec32676.jpg" },
+  { icon: "Bike", title: "Активный отдых", desc: "Велосипеды, каяки, волейбол, пляж", image: "https://cdn.poehali.dev/projects/66ae829b-e98a-4b94-a8d3-321775b785ad/files/9c427133-5301-41f1-a19a-c595b91bb098.jpg" },
+  { icon: "Baby", title: "Для детей", desc: "Детская площадка, безопасная территория", image: "https://cdn.poehali.dev/projects/66ae829b-e98a-4b94-a8d3-321775b785ad/files/7be560f5-3c1e-479b-a7de-c75b777fd854.jpg" },
+  { icon: "Coffee", title: "Питание", desc: "Домашняя кухня по предварительному заказу", image: "https://cdn.poehali.dev/projects/66ae829b-e98a-4b94-a8d3-321775b785ad/files/c97bea7f-b800-4c00-a8e2-6e93cb5d8a49.jpg" },
 ];
 
 const advantages = [
@@ -304,16 +304,26 @@ export default function MainSections({ scrollTo }: MainSectionsProps) {
             {services.map((s) => (
               <div
                 key={s.title}
-                className="group p-6 rounded-2xl border border-border hover:border-ocean-mid/40 bg-white hover:bg-white hover:shadow-lg transition-all duration-300"
+                className="group rounded-2xl border border-border hover:border-ocean-mid/40 bg-white hover:shadow-xl transition-all duration-300 overflow-hidden"
               >
-                <div
-                  className="w-14 h-14 rounded-2xl mb-4 flex items-center justify-center"
-                  style={{ background: "linear-gradient(135deg, #0891b2, #14b8a6)" }}
-                >
-                  <Icon name={s.icon} size={24} className="text-white" />
+                <div className="relative h-44 overflow-hidden">
+                  <img
+                    src={s.image}
+                    alt={s.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ocean-deep/50 to-transparent" />
+                  <div
+                    className="absolute bottom-3 left-3 w-10 h-10 rounded-xl flex items-center justify-center"
+                    style={{ background: "linear-gradient(135deg, #0891b2, #14b8a6)" }}
+                  >
+                    <Icon name={s.icon} size={18} className="text-white" />
+                  </div>
                 </div>
-                <h3 className="font-bold text-ocean-deep text-lg mb-2">{s.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{s.desc}</p>
+                <div className="p-5">
+                  <h3 className="font-bold text-ocean-deep text-lg mb-1">{s.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{s.desc}</p>
+                </div>
               </div>
             ))}
           </div>
